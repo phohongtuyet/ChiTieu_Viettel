@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('linh_vucs', function (Blueprint $table) {
+        Schema::create('linhvuc', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('tensanpham');
+            $table->double('doanhthu');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrentOnUpdate();
+            $table->engine = 'InnoDB';
+           
         });
     }
 
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('linh_vucs');
+        Schema::dropIfExists('linhvuc');
     }
 };
