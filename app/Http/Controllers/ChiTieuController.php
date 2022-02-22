@@ -20,13 +20,6 @@ class ChiTieuController extends Controller
         return view('chitieu.danhsach',compact('chitieu'));
     }
 
-    public function postNhap(Request $request)
-    {
-        Excel::import(new ChiTieuImport, $request->file('file_excel'));
-    
-        return redirect()->route('chitieu');
-    }
-
     public function getThem()
     {
         return view('chitieu.them');
@@ -40,7 +33,7 @@ class ChiTieuController extends Controller
 
         ], 
         $messages = [
-            'tenlinhvuc.required' => 'Tên lĩnh vực không được bỏ trống.',
+            'tenlinhvuc.required' => 'Lĩnh vực chưa chọn.',
             'unique' => 'Tên lĩnh vực đã có trong hệ thống.',
             'doanhthu.required' => 'Doanh thu không được bỏ trống.',
 

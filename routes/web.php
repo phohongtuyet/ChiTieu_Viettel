@@ -13,7 +13,6 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
 Route::get('/chitieu', [ChiTieuController::class, 'getDanhSach'])->name('chitieu');
-Route::post('/chitieu/nhap', [ChiTieuController::class, 'postNhap'])->name('chitieu.nhap');
 Route::get('/chitieu/them', [ChiTieuController::class, 'getThem'])->name('chitieu.them');
 Route::post('/chitieu/them', [ChiTieuController::class, 'postThem'])->name('chitieu.them');
 
