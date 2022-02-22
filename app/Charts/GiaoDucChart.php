@@ -4,14 +4,14 @@ declare(strict_types = 1);
 
 namespace App\Charts;
 
-use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use Chartisan\PHP\Chartisan;
 use App\Models\ChiTieu;
-use App\Models\YTe;
+use App\Models\GiaoDuc;
 use Illuminate\Support\Facades\DB;
 
-class SampleChart extends BaseChart
+class GiaoDucChart extends BaseChart
 {
     /**
      * Handles the HTTP request for the given chart.
@@ -20,16 +20,15 @@ class SampleChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+        $giaoduc = ChiTieu::where('tenlinhvuc',3)->first();
+        $doanhthugiaoduc = $giaoduc->doanhthu;
 
-        $yte = ChiTieu::where('tenlinhvuc',2)->first();
-        $doanhthuyte = $yte->doanhthu;
-
-        $doanhthu =  DB::table('yte')->sum('yte.doanhthu');
+        $doanhthu = GiaoDuc::sum('doanhthu');
             
         return Chartisan::build()
             ->labels(['Doanh thu'])
             ->dataset('Đạt được ', [$doanhthu])
-            ->dataset('Doanh thu mục tiêu', [$doanhthuyte])
-            ->dataset('Còn Thiếu', [$doanhthuyte-$doanhthu]);
+            ->dataset('Doanh thu mục tiêu', [$doanhthugiaoduc])
+            ->dataset('Còn Thiếu', [$doanhthugiaoduc-$doanhthu]);
     }
 }

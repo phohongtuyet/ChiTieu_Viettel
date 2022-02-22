@@ -41,35 +41,95 @@
         </div>
     </div>
 </div>
-<!-- Sale & Revenue End -->
 
-
-<!-- Sales Chart Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-12 col-xl-6">
             <div class="bg-light text-center rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Worldwide Sales</h6>
-                    <a href="">Show All</a>
+                    <h6 class="mb-0">Y tế</h6>
                 </div>
-                <!-- Chart's container -->
                 <div id="chart" style="height: 300px;"></div>
             </div>
         </div>
         <div class="col-sm-12 col-xl-6">
             <div class="bg-light text-center rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Salse & Revenue</h6>
-                    <a href="">Show All</a>
+                    <h6 class="mb-0">Giáo dục</h6>
                 </div>
-                <div id="chart" style="height: 300px;"></div>
+                <div id="chartgiaoduc" style="height: 300px;"></div>
             </div>
         </div>
     </div>
+    
 </div>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Kênh truyền</h6>
+                </div>
+                <div id="chartkenhtruyen" style="height: 300px;"></div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Dự án</h6>
+                </div>
+                <div id="chartduan" style="height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+ 
+@endsection
+@section('javascript')
+<script>
+        const chart = new Chartisan({
+            el: '#chart',
+            url: "@chart('sample_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .responsive()
+                .beginAtZero()
+                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .legend({ position: 'bottom' })
+        });
 
+        const chartgiaoduc = new Chartisan({
+            el: '#chartgiaoduc',
+            url: "@chart('giao_duc_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .responsive()
+                .beginAtZero()
+                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .legend({ position: 'bottom' })
+        });
 
-            
+        const chartkenhtruyen = new Chartisan({
+            el: '#chartkenhtruyen',
+            url: "@chart('kenh_truyen_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .responsive()
+                .beginAtZero()
+                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .legend({ position: 'bottom' })
+        });
 
+        const chartduan = new Chartisan({
+            el: '#chartduan',
+            url: "@chart('du_an_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .responsive()
+                .beginAtZero()
+                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .legend({ position: 'bottom' })
+        });
+</script>
 @endsection
