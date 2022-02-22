@@ -4,22 +4,23 @@
 <div class="container-fluid" >
     <div class="card-body table-responsive">
         <p>
+            <a href="{{route('chitieu.them')}}" class="btn btn-success" ><i class="fas fa-plus"></i> Nhập từ Excel</a>
             <a href="#nhap" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#importModal"><i class="fas fa-upload"></i> Nhập từ Excel</a>
         </p>
         <table class="table table-hover mt-4">
             <thead>
                 <tr>
                     <th width="10">#</th>
-                    <th width="45">Tên</th>
-                    <th width="45">Doanh thu</th>
+                    <th width="45" class="text-center">Tên lĩnh vực</th>
+                    <th width="45" class="text-center">Doanh thu mục tiêu</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($linhvuc as $value)
+                @foreach($chitieu as $value)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td>{{ $value->tensanpham }}</td>
-                    <td>{{ $value->doanhthu }}</td>
+                    <td class="text-center">{{ $value->tenlinhvuc }}</td>
+                    <td class="text-center">{{number_format($value->doanhthu )}}</td>
                 </tr>
                 @endforeach
             </tbody>
