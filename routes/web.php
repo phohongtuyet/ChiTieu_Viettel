@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController; 
+use App\Http\Controllers\LinhVucController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'getHome'])->name('home');
+Route::get('/chitieu', [LinhVucController::class, 'getDanhSach'])->name('chitieu');
+Route::post('/chitieu/nhap', [LinhVucController::class, ' postNhap'])->name('chitieu.nhap');
+
