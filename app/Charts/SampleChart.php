@@ -7,6 +7,9 @@ namespace App\Charts;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use App\Models\ChiTieu;
+use App\Models\YTe;
+use Illuminate\Support\Facades\DB;
 
 class SampleChart extends BaseChart
 {
@@ -17,9 +20,15 @@ class SampleChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+
+        $yte = ChiTieu::where('tenlinhvuc',2)->first();
+        $doanhthuyte = $yte->doanhthu;
+
+        $doanhthu =  DB::table('yte')
+            ->sum('yte.doanhthu');
+            
         return Chartisan::build()
-            ->labels(['First', 'Second', 'Third'])
-            ->dataset('Sample', [1, 2, 3])
-            ->dataset('Sample 2', [3, 2, 1]);
+            ->labels(['Y Tế', 'Doanh thu mục tiêu','Doanh thu còn thiếu'])
+            ->dataset('Biểu đồ so sánh doanh thu mục tiêu', [$doanhthu, $doanhthuyte,$doanhthuyte-$doanhthu]);
     }
 }

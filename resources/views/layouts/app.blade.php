@@ -238,9 +238,11 @@
         el: '#chart',
         url: "@chart('sample_chart')",
         hooks: new ChartisanHooks()
-    .datasets('doughnut')
-    .pieColors(),
-      });
+                .colors()
+                .responsive()
+                .beginAtZero()
+                .legend({ position: 'bottom' })
+        });
     </script>
 </body>
 
