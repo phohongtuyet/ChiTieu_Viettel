@@ -26,7 +26,7 @@
                             <span>Kênh truyền</span>
                         @elseif($value->tenlinhvuc == 2)
                             <span>Y tế</span>
-                        @elseif($value->tenlinhvuc == 2)
+                        @elseif($value->tenlinhvuc == 3)
                             <span>Giáo dục </span>
                         @else
                             <span>Dự án </span>
