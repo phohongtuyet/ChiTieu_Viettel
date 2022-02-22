@@ -53,7 +53,8 @@
                     <h6 class="mb-0">Worldwide Sales</h6>
                     <a href="">Show All</a>
                 </div>
-                <canvas id="worldwide-sales"></canvas>
+                <!-- Chart's container -->
+                <div id="chart" style="height: 300px;"></div>
             </div>
         </div>
         <div class="col-sm-12 col-xl-6">
@@ -62,7 +63,7 @@
                     <h6 class="mb-0">Salse & Revenue</h6>
                     <a href="">Show All</a>
                 </div>
-                <canvas id="salse-revenue"></canvas>
+                <div id="chart" style="height: 300px;"></div>
             </div>
         </div>
     </div>
