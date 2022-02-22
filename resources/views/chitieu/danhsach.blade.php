@@ -1,12 +1,15 @@
 @extends('layouts.app')
 @section('content')
-<!-- Sign In Start -->
+
 <div class="container-fluid" >
     <div class="card-body table-responsive">
+    <div class="title"><h3>Danh sách chỉ tiêu doanh thu </h3> </div>
+
         <p>
             <a href="{{route('chitieu.them')}}" class="btn btn-success" ><i class="fas fa-plus"></i> Nhập từ Excel</a>
             <a href="#nhap" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#importModal"><i class="fas fa-upload"></i> Nhập từ Excel</a>
         </p>
+
         <table class="table table-hover mt-4">
             <thead>
                 <tr>
