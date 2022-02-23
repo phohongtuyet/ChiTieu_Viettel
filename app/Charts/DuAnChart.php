@@ -19,7 +19,7 @@ class DuAnChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $duan = ChiTieu::where('tenlinhvuc',2)->first();
+        $duan = ChiTieu::where('tenlinhvuc',4)->first();
         $doanhthuduan = $duan->doanhthu;
 
         $doanhthu =  DB::table('duan')->sum('duan.doanhthu');
