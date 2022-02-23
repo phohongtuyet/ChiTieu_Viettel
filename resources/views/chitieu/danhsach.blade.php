@@ -13,8 +13,11 @@
             <thead>
                 <tr>
                     <th width="10">#</th>
-                    <th width="45" class="text-center">Tên lĩnh vực</th>
-                    <th width="45" class="text-center">Doanh thu mục tiêu</th>
+                    <th width="35" class="text-center">Tên lĩnh vực</th>
+                    <th width="35" class="text-center">Doanh thu mục tiêu</th>
+                    <th width="10" class="text-center">Sửa</th>
+                    <th width="10" class="text-center">Xóa</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +36,8 @@
                         @endif
                     </td>
                     <td class="text-center">{{number_format($value->doanhthu )}}</td>
+                    <td class="text-center"><a href="{{ route('chitieu.sua', ['id' => $value->id]) }}"><i class="fa fa-edit"></i></a></td> 
+                    <td class="text-center"><a href="{{ route('chitieu.xoa', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>

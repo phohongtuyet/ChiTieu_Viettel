@@ -15,6 +15,9 @@ Route::get('/', [HomeController::class, 'getHome'])->name('home');
 Route::get('/chitieu', [ChiTieuController::class, 'getDanhSach'])->name('chitieu');
 Route::get('/chitieu/them', [ChiTieuController::class, 'getThem'])->name('chitieu.them');
 Route::post('/chitieu/them', [ChiTieuController::class, 'postThem'])->name('chitieu.them');
+Route::get('/chitieu/sua/{id}', [ChiTieuController::class, 'getSua'])->name('chitieu.sua');
+Route::post('/chitieu/sua/{id}', [ChiTieuController::class, 'postSua'])->name('chitieu.sua');
+Route::get('/chitieu/xoa/{id}', [ChiTieuController::class, 'getXoa'])->name('chitieu.xoa');
 
 Route::get('/kenhtruyen', [KenhTruyenController::class, 'getDanhSach'])->name('kenhtruyen');
 Route::post('/kenhtruyen/nhap', [KenhTruyenController::class, 'postNhap'])->name('kenhtruyen.nhap');
