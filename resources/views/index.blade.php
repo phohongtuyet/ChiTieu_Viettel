@@ -47,6 +47,27 @@
         <div class="col-sm-12 col-xl-6">
             <div class="bg-light text-center rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Doanh thu dịch vụ</h6>
+                </div>
+                <div id="chart_doanhthudichvu" style="height: 300px;"></div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Tổng doanh thu</h6>
+                </div>
+                <div id="chart_tongdoanhthu" style="height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
                     <h6 class="mb-0">Y tế</h6>
                 </div>
                 <div id="chart" style="height: 300px;"></div>
@@ -95,7 +116,7 @@
                 .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
-                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .title('Biểu đồ Chi tiết DT - TB')
                 .legend({ position: 'bottom' })
         });
 
@@ -106,7 +127,7 @@
                 .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
-                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .title('Biểu đồ Chi tiết DT - TB')
                 .legend({ position: 'bottom' })
         });
 
@@ -117,7 +138,7 @@
                 .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
-                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .title('Biểu đồ Chi tiết DT - TB')
                 .legend({ position: 'bottom' })
         });
 
@@ -128,7 +149,27 @@
                 .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
-                .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
+                .title('Biểu đồ Chi tiết DT - TB')
+                .legend({ position: 'bottom' })
+        });
+        const chart_doanhthudichvu = new Chartisan({
+            el: '#chart_doanhthudichvu',
+            url: "@chart('doanh_thu_dich_vu_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
+                .responsive()
+                .beginAtZero()
+                .title('Biểu đồ Chi tiết DT - TB')
+                .legend({ position: 'bottom' })
+        });
+        const chart_tongdoanhthu = new Chartisan({
+            el: '#chart_tongdoanhthu',
+            url: "@chart('tong_doanh_thu_chart')",
+            hooks: new ChartisanHooks()
+                .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
+                .responsive()
+                .beginAtZero()
+                .title('Biểu đồ Chi tiết DT - TB')
                 .legend({ position: 'bottom' })
         });
 </script>

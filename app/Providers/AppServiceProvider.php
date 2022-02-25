@@ -32,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
             \App\Charts\YTeChart::class,
             \App\Charts\GiaoDucChart::class,
             \App\Charts\KenhTruyenChart::class,
+            \App\Charts\DoanhThuDichVuChart::class,
+            \App\Charts\TongDoanhThuChart::class,
             \App\Charts\DuAnChart::class
 
         ]);
