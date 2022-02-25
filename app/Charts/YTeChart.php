@@ -41,7 +41,7 @@ class YTeChart extends BaseChart
             ->dataset('Kế hoạch', [$KH->yte])
             ->dataset('Thực hiện', [$TH->yte])
             ->dataset('Phần trâm thực hiện', [$ptTH *100])
-            ->dataset('Điểm ', [$diem]);
+            ->dataset('Điểm ', [number_format($diem,1)]);
 
     }
 }

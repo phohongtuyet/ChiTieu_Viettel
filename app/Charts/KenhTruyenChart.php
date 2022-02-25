@@ -39,6 +39,6 @@ class KenhTruyenChart extends BaseChart
             ->dataset('Kế hoạch', [$KH->kenhtruyen])
             ->dataset('Thực hiện', [$TH->kenhtruyen])
             ->dataset('Phần trâm thực hiện', [$ptTH *100])
-            ->dataset('Điểm ', [$diem]);
+            ->dataset('Điểm ', [number_format($diem,1)]);
     }
 }

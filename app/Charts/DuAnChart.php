@@ -40,6 +40,6 @@ class DuAnChart extends BaseChart
             ->dataset('Kế hoạch', [$KH->duan])
             ->dataset('Thực hiện', [$TH->duan])
             ->dataset('Phần trâm thực hiện', [$ptTH *100])
-            ->dataset('Điểm ', [$diem]);
+            ->dataset('Điểm ', [number_format($diem,1)]);
     }
 }

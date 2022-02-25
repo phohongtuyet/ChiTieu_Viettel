@@ -19,12 +19,17 @@ class HomeController extends Controller
         if(Auth::check())
         {
             $KH = ChiTieu::select('yte','duan','kenhtruyen','giaoduc')->first();
+            if(!empty($KH))
+            {
+                $kenhtruyen = $KH->kenhtruyen;
+                $yte =  $KH->yte;
+                $giaoduc = $KH->giaoduc;
+                $duan = $KH->duan;
+                return view('index',compact('kenhtruyen','yte','giaoduc','duan'));  
 
-            $kenhtruyen = $KH->kenhtruyen;
-            $yte =  $KH->yte;
-            $giaoduc = $KH->giaoduc;
-            $duan = $KH->duan;
-            return view('index',compact('kenhtruyen','yte','giaoduc','duan'));
+            } 
+            return view('index');  
+
         }
         else
         {

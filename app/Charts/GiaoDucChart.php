@@ -40,6 +40,6 @@ class GiaoDucChart extends BaseChart
             ->dataset('Kế hoạch', [$KH->giaoduc])
             ->dataset('Thực hiện', [$TH->giaoduc])
             ->dataset('Phần trâm thực hiện', [$ptTH *100])
-            ->dataset('Điểm ', [$diem]);
+            ->dataset('Điểm ', [number_format($diem,1)]);
     }
 }
