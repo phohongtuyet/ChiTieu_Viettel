@@ -8,6 +8,7 @@ use App\Http\Controllers\GiaoDucController;
 use App\Http\Controllers\DuAnController; 
 use App\Http\Controllers\KenhTruyenController; 
 use App\Http\Controllers\ChiTieuController;
+use App\Http\Controllers\ThucHienController;
 
 Auth::routes();
 
@@ -18,17 +19,12 @@ Route::post('/chitieu/them', [ChiTieuController::class, 'postThem'])->name('chit
 Route::get('/chitieu/sua/{id}', [ChiTieuController::class, 'getSua'])->name('chitieu.sua');
 Route::post('/chitieu/sua/{id}', [ChiTieuController::class, 'postSua'])->name('chitieu.sua');
 Route::get('/chitieu/xoa/{id}', [ChiTieuController::class, 'getXoa'])->name('chitieu.xoa');
+Route::post('/chitieu/nhap', [ChiTieuController::class, 'postNhap'])->name('chitieu.nhap');
 
-Route::get('/kenhtruyen', [KenhTruyenController::class, 'getDanhSach'])->name('kenhtruyen');
-Route::post('/kenhtruyen/nhap', [KenhTruyenController::class, 'postNhap'])->name('kenhtruyen.nhap');
-
-Route::get('/yte', [YTeController::class, 'getDanhSach'])->name('yte');
-Route::post('/yte/nhap', [YTeController::class, 'postNhap'])->name('yte.nhap');
-
-Route::get('/giaoduc', [GiaoDucController::class, 'getDanhSach'])->name('giaoduc');
-Route::post('/giaoduc/nhap', [GiaoDucController::class, 'postNhap'])->name('giaoduc.nhap');
-
-Route::get('/duan', [DuAnController::class, 'getDanhSach'])->name('duan');
-Route::post('/duan/nhap', [DuAnController::class, 'postNhap'])->name('duan.nhap');
-
-
+Route::get('/thuchien', [ThucHienController::class, 'getDanhSach'])->name('thuchien');
+Route::get('/thuchien/them', [ThucHienController::class, 'getThem'])->name('thuchien.them');
+Route::post('/thuchien/them', [ThucHienController::class, 'postThem'])->name('thuchien.them');
+Route::get('/thuchien/sua/{id}', [ThucHienController::class, 'getSua'])->name('thuchien.sua');
+Route::post('/thuchien/sua/{id}', [ThucHienController::class, 'postSua'])->name('thuchien.sua');
+Route::get('/thuchien/xoa/{id}', [ThucHienController::class, 'getXoa'])->name('thuchien.xoa');
+Route::post('/thuchien/nhap', [ThucHienController::class, 'postNhap'])->name('thuchien.nhap');

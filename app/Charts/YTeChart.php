@@ -4,14 +4,14 @@ declare(strict_types = 1);
 
 namespace App\Charts;
 
+use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
-use Chartisan\PHP\Chartisan;
 use App\Models\ChiTieu;
-use Illuminate\Support\Facades\DB;
 use App\Models\ThucHien;
+use Illuminate\Support\Facades\DB;
 
-class DuAnChart extends BaseChart
+class YTeChart extends BaseChart
 {
     /**
      * Handles the HTTP request for the given chart.
@@ -20,26 +20,28 @@ class DuAnChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $KH = ChiTieu::select('duan','tytrongduan')->first();
-        $TH = ThucHien::select('duan')->first();
 
-        $ptTH = $TH->duan/$KH->duan ;
+        $KH = ChiTieu::select('yte','tytrongyte')->first();
+        $TH = ThucHien::select('yte')->first();
+
+        $ptTH = $TH->yte/$KH->yte ;
         $diem = 0 ;
 
         if($ptTH < 120 )
         {
-            $diem = $ptTH * $KH->tytrongduan;
+            $diem = $ptTH * $KH->tytrongyte;
         }
         else
         {
-            $diem = (120/100) * $KH->tytrongduan;
+            $diem = (120/100) * $KH->tytrongyte;
         }
 
         return Chartisan::build()
-            ->labels(['Kênh truyền '])
-            ->dataset('Kế hoạch', [$KH->duan])
-            ->dataset('Thực hiện', [$TH->duan])
+            ->labels(['Y tế'])
+            ->dataset('Kế hoạch', [$KH->yte])
+            ->dataset('Thực hiện', [$TH->yte])
             ->dataset('Phần trâm thực hiện', [$ptTH *100])
             ->dataset('Điểm ', [$diem]);
+
     }
 }

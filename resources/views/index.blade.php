@@ -8,7 +8,7 @@
                 <i class="fa fa-solid fa-tv fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Kênh truyền </p>
-                    <h6 class="mb-0"> @if(!empty($kenhtruyen)) {{ number_format($kenhtruyen->doanhthu) }} @endif</h6>
+                    <h6 class="mb-0"> @if(!empty($kenhtruyen)) {{ $kenhtruyen }} @endif</h6>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <i class="fa fa-solid fa-briefcase-medical fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Y tế </p>
-                    <h6 class="mb-0">@if(!empty($yte)) {{ number_format($yte->doanhthu) }} @endif</h6>
+                    <h6 class="mb-0">@if(!empty($yte)) {{ number_format($yte) }} @endif</h6>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 <i class="fa fa-solid fa-graduation-cap fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Giáo dục </p>
-                    <h6 class="mb-0">@if(!empty($giaoduc)){{ number_format($giaoduc->doanhthu) }}@endif</h6>
+                    <h6 class="mb-0">@if(!empty($giaoduc)){{ number_format($giaoduc) }}@endif</h6>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
                     <p class="mb-2">Dự án </p>
-                    <h6 class="mb-0">@if(!empty($duan)){{ number_format($duan->doanhthu) }} @endif</h6>
+                    <h6 class="mb-0">@if(!empty($duan)){{ number_format($duan) }} @endif</h6>
                 </div>
             </div>
         </div>
@@ -90,9 +90,9 @@
 <script>
         const chart = new Chartisan({
             el: '#chart',
-            url: "@chart('sample_chart')",
+            url: "@chart('y_te_chart')",
             hooks: new ChartisanHooks()
-                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
                 .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
@@ -103,7 +103,7 @@
             el: '#chartgiaoduc',
             url: "@chart('giao_duc_chart')",
             hooks: new ChartisanHooks()
-                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
                 .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
@@ -114,7 +114,7 @@
             el: '#chartkenhtruyen',
             url: "@chart('kenh_truyen_chart')",
             hooks: new ChartisanHooks()
-                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
                 .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')
@@ -125,7 +125,7 @@
             el: '#chartduan',
             url: "@chart('du_an_chart')",
             hooks: new ChartisanHooks()
-                .colors(['#00CC00', '#4299E1','#FF0000'])
+                .colors(['#00CC00', '#4299E1','#FF0000','#FFD32D'])
                 .responsive()
                 .beginAtZero()
                 .title('Biểu đồ so sánh doanh thu mục tiêu và doanh thu hiện tại')

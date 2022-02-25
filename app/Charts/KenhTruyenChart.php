@@ -8,6 +8,7 @@ use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
 use Chartisan\PHP\Chartisan;
 use App\Models\ChiTieu;
+use App\Models\ThucHien;
 use Illuminate\Support\Facades\DB;
 class KenhTruyenChart extends BaseChart
 {
@@ -18,15 +19,26 @@ class KenhTruyenChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $yte = ChiTieu::where('tenlinhvuc',1)->first();
-        $doanhthuyte = $yte->doanhthu;
+        $KH = ChiTieu::select('kenhtruyen','tytrongkenhtruyen')->first();
+        $TH = ThucHien::select('kenhtruyen')->first();
 
-        $doanhthu =  DB::table('kenhtruyen')->sum('kenhtruyen.doanhthu');
-            
+        $ptTH = $TH->kenhtruyen/$KH->kenhtruyen ;
+        $diem = 0 ;
+
+        if($ptTH < 120 )
+        {
+            $diem = $ptTH * $KH->tytrongkenhtruyen;
+        }
+        else
+        {
+            $diem = (120/100) * $KH->tytrongkenhtruyen;
+        }
+
         return Chartisan::build()
-            ->labels(['Doanh thu'])
-            ->dataset('Đạt được ', [$doanhthu])
-            ->dataset('Doanh thu mục tiêu', [$doanhthuyte])
-            ->dataset('Còn Thiếu', [$doanhthuyte-$doanhthu]);
+            ->labels(['Kênh truyền '])
+            ->dataset('Kế hoạch', [$KH->kenhtruyen])
+            ->dataset('Thực hiện', [$TH->kenhtruyen])
+            ->dataset('Phần trâm thực hiện', [$ptTH *100])
+            ->dataset('Điểm ', [$diem]);
     }
 }

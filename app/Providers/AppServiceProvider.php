@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         $charts->register([
-            \App\Charts\SampleChart::class,
+            \App\Charts\YTeChart::class,
             \App\Charts\GiaoDucChart::class,
             \App\Charts\KenhTruyenChart::class,
             \App\Charts\DuAnChart::class

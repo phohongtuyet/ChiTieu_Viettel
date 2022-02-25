@@ -1,41 +1,49 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container-fluid" >
     <div class="card-body table-responsive">
-    <div class="title"><h3>Danh sách chỉ tiêu doanh thu </h3> </div>
-
+    <div class="title"><h3>Danh sách Chi Tiết DT - TB </h3> </div>
         <p>
             <a href="{{route('chitieu.them')}}" class="btn btn-success" ><i class="fas fa-plus"></i> Thêm  </a>
+            <a href="#nhap" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#importModal"><i class="fas fa-upload"></i> Nhập từ Excel</a>
         </p>
 
         <table class="table table-hover mt-4">
             <thead>
                 <tr>
-                    <th width="10">#</th>
-                    <th width="35" class="text-center">Tên lĩnh vực</th>
-                    <th width="35" class="text-center">Doanh thu mục tiêu</th>
-                    <th width="10" class="text-center">Sửa</th>
-                    <th width="10" class="text-center">Xóa</th>
-
+                    <th width="5">#</th>
+                    <th width="15" class="text-center">Doanh thu dịch vụ</th>
+                    <th width="15" class="text-center">Tỷ trọng doanh thu dịch vụ</th>
+                    <th width="15" class="text-center">Tổng doanh thu</th>
+                    <th width="15" class="text-center">Tỷ trọng tổng doanh thu dịch vụ</th>
+                    <th width="15" class="text-center">Dự án</th>
+                    <th width="15" class="text-center">Tỷ trọng dự án</th>
+                    <th width="15" class="text-center">Kênh truyền</th>
+                    <th width="15" class="text-center">Tỷ trong kênh truyền</th>
+                    <th width="15" class="text-center">Giáo dục</th>
+                    <th width="15" class="text-center">Tỷ trong giáo dục</th>
+                    <th width="15" class="text-center">Y tế</th>
+                    <th width="15" class="text-center">Tỷ trọng y tế</th>
+                    <th width="5" class="text-center">Sửa</th>
+                    <th width="5" class="text-center">Xóa</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($chitieu as $value)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td class="text-center">
-                        @if($value->tenlinhvuc == 1)
-                            <span>Kênh truyền</span>
-                        @elseif($value->tenlinhvuc == 2)
-                            <span>Y tế</span>
-                        @elseif($value->tenlinhvuc == 3)
-                            <span>Giáo dục </span>
-                        @else
-                            <span>Dự án </span>
-                        @endif
-                    </td>
-                    <td class="text-center">{{number_format($value->doanhthu )}}</td>
+                    <td class="text-center">{{number_format($value->doanhthudichvu) }}</td>
+                    <td class="text-center">{{number_format($value->tytrongdoanhthudichvu) }}</td>
+                    <td class="text-center">{{number_format($value->tongdoanhthu)}}</td>
+                    <td class="text-center">{{number_format($value->tytrongtongdoanhthu) }}</td>
+                    <td class="text-center">{{number_format($value->duan)}}</td>
+                    <td class="text-center">{{number_format($value->tytrongduan) }}</td>
+                    <td class="text-center">{{number_format($value->kenhtruyen)}}</td>
+                    <td class="text-center">{{number_format($value->tytrongkenhtruyen) }}</td>
+                    <td class="text-center">{{number_format($value->giaoduc)}}</td>
+                    <td class="text-center">{{number_format($value->tytronggiaoduc) }}</td>
+                    <td class="text-center">{{number_format($value->yte)}}</td>
+                    <td class="text-center">{{number_format($value->tytrongyte) }}</td>
                     <td class="text-center"><a href="{{ route('chitieu.sua', ['id' => $value->id]) }}"><i class="fa fa-edit"></i></a></td> 
                     <td class="text-center"><a href="{{ route('chitieu.xoa', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger"></i></a></td>
                 </tr>
@@ -44,5 +52,27 @@
         </table>
     </div>
 </div>
-
+<form action="{{ route('chitieu.nhap') }}" method="post" enctype="multipart/form-data">
+    @csrf
+    <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importModalLabel">Nhập từ Excel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-0">
+                        <label for="file_excel" class="form-label">Chọn tập tin Excel</label>
+                        <input type="file" class="form-control" id="file_excel" name="file_excel" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Hủy bỏ</button>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-upload"></i> Nhập dữ liệu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 @endsection

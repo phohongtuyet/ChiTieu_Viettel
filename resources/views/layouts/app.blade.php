@@ -67,16 +67,16 @@
                     </div>
                     <div class="navbar-nav w-100">
                         <a href="{{route('home')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                        
-                        <a href="{{ route('chitieu') }}" class="nav-link " ><i class="fa fa-laptop me-2"></i>Chỉ tiêu</a>
-                          
+
+                        <a href="{{ route('chitieu') }}" class="nav-link " ><i class="fas fa-calendar-day"></i>Chi tiết DT - TB</a>
+                        <a href="{{ route('thuchien') }}" class="nav-link " ><i class="fa fa-laptop me-2"></i>Ctrinh HĐ</a>
+
+
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Lĩnh vực </a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Thực hiện</a>
                             <div class="dropdown-menu bg-transparent border-0">
-                                <a href="{{ route('kenhtruyen') }}" class="dropdown-item">Kênh truyền</a>
-                                <a href="{{ route('yte') }}" class="dropdown-item">Y tế</a>
-                                <a href="{{ route('giaoduc') }}" class="dropdown-item">Giáo dục</a>
-                                <a href="{{ route('duan') }}" class="dropdown-item">Dự án</a>
+                                <a href="{{ route('thuchien') }}" class="dropdown-item">Chi tiết DT - TB</a>
+                                <a href="" class="dropdown-item">Ctrinh HĐ </a>
 
                             </div>
                         </div>

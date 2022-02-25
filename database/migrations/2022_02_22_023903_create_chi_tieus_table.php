@@ -15,8 +15,19 @@ return new class extends Migration
     {
         Schema::create('chitieu', function (Blueprint $table) {
             $table->id();
-            $table->string('tenlinhvuc');
-            $table->double('doanhthu');
+            $table->double('thang')->nullable();
+            $table->double('doanhthudichvu')->nullable();
+            $table->double('tytrongdoanhthudichvu')->nullable();
+            $table->double('tongdoanhthu')->nullable();
+            $table->double('tytrongtongdoanhthu')->nullable();
+            $table->double('duan')->nullable();
+            $table->double('tytrongduan')->nullable();
+            $table->double('kenhtruyen')->nullable();
+            $table->double('tytrongkenhtruyen')->nullable();
+            $table->double('giaoduc')->nullable();
+            $table->double('tytronggiaoduc')->nullable();
+            $table->double('yte')->nullable();
+            $table->double('tytrongyte')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->engine = 'InnoDB';

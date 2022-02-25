@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('linhvuc', function (Blueprint $table) {
+        Schema::create('thuchien', function (Blueprint $table) {
             $table->id();
-            $table->string('tensanpham');
-            $table->double('doanhthu');
+            $table->double('doanhthudichvu')->nullable();
+            $table->double('tongdoanhthu')->nullable();
+            $table->double('duan')->nullable();
+            $table->double('kenhtruyen')->nullable();
+            $table->double('giaoduc')->nullable();
+            $table->double('yte')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->engine = 'InnoDB';
-           
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('linhvuc');
+        Schema::dropIfExists('thuchien');
     }
 };

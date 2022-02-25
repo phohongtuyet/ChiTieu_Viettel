@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Models\YTe;
-use App\Models\GiaoDuc;
-use App\Models\KenhTruyen;
-use App\Models\DuAn;
 use App\Models\ChiTieu;
+use App\Models\ThucHien;
 
 class HomeController extends Controller
 {
@@ -21,11 +18,12 @@ class HomeController extends Controller
     {
         if(Auth::check())
         {
-            $kenhtruyen = ChiTieu::where('tenlinhvuc',1)->first();
-            $yte = ChiTieu::where('tenlinhvuc',2)->first();
-            $giaoduc = ChiTieu::where('tenlinhvuc',3)->first();
-            $duan = ChiTieu::where('tenlinhvuc',4)->first();
-            
+            $KH = ChiTieu::select('yte','duan','kenhtruyen','giaoduc')->first();
+
+            $kenhtruyen = $KH->kenhtruyen;
+            $yte =  $KH->yte;
+            $giaoduc = $KH->giaoduc;
+            $duan = $KH->duan;
             return view('index',compact('kenhtruyen','yte','giaoduc','duan'));
         }
         else

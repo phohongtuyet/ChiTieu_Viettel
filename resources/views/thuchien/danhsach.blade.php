@@ -1,34 +1,46 @@
 @extends('layouts.app')
 @section('content')
-<!-- Sign In Start -->
 <div class="container-fluid" >
     <div class="card-body table-responsive">
-        <div class="title"><h3>Danh sách dự án Y TẾ</h3> </div>
-
+    <div class="title"><h3>Danh sách thực hiện </h3> </div>
         <p>
+            <a href="{{route('thuchien.them')}}" class="btn btn-success" ><i class="fas fa-plus"></i> Thêm  </a>
             <a href="#nhap" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#importModal"><i class="fas fa-upload"></i> Nhập từ Excel</a>
         </p>
+
         <table class="table table-hover mt-4">
             <thead>
                 <tr>
-                    <th width="10">#</th>
-                    <th width="45" class="text-center">Tên dự án</th>
-                    <th width="45" class="text-center">Doanh thu </th>
+                    <th width="5">#</th>
+                    <th width="15" class="text-center">Doanh thu dịch vụ</th>
+                    <th width="15" class="text-center">Tổng doanh thu</th>
+                    <th width="15" class="text-center">Dự án</th>
+                    <th width="15" class="text-center">Kênh truyền</th>
+                    <th width="15" class="text-center">Giáo dục</th>
+                    <th width="15" class="text-center">Y tế</th>
+                    <th width="5" class="text-center">Sửa</th>
+                    <th width="5" class="text-center">Xóa</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($yte as $value)
+                @foreach($thuchien as $value)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td class="text-center">{{ $value->tenduan }}</td>
-                    <td class="text-center">{{number_format($value->doanhthu )}}</td>
+                    <td class="text-center">{{number_format($value->doanhthudichvu) }}</td>
+                    <td class="text-center">{{number_format($value->tongdoanhthu)}}</td>
+                    <td class="text-center">{{number_format($value->duan)}}</td>
+                    <td class="text-center">{{number_format($value->kenhtruyen)}}</td>
+                    <td class="text-center">{{number_format($value->giaoduc)}}</td>
+                    <td class="text-center">{{number_format($value->yte)}}</td>
+                    <td class="text-center"><a href="{{ route('thuchien.sua', ['id' => $value->id]) }}"><i class="fa fa-edit"></i></a></td> 
+                    <td class="text-center"><a href="{{ route('thuchien.xoa', ['id' => $value->id]) }}" onclick="return confirm('Bạn có muốn xóa lĩnh vực không?')"><i class="fa fa-trash-alt text-danger"></i></a></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
-<form action="{{ route('yte.nhap') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('thuchien.nhap') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModalLabel" aria-hidden="true">
         <div class="modal-dialog">

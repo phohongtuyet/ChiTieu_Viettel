@@ -12,7 +12,18 @@ class ChiTieu extends Model
     protected $table = 'chitieu';
 
     protected $fillable = [
-        'tenlinhvuc',
-        'doanhthu',   
+        'thang',
+        'doanhthudichvu',
+        'tytrongdoanhthudichvu',
+        'tongdoanhthu', 
+        'tytrongtongdoanhthu',
+        'duan',   
+        'tytrongduan',
+        'kenhtruyen', 
+        'tytrongkenhtruyen',
+        'giaoduc',   
+        'tytronggiaoduc',
+        'yte',   
+        'tytrongyte',
     ];
 }

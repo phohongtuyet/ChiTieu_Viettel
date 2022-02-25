@@ -8,8 +8,8 @@ use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
 use Chartisan\PHP\Chartisan;
 use App\Models\ChiTieu;
-use App\Models\GiaoDuc;
 use Illuminate\Support\Facades\DB;
+use App\Models\ThucHien;
 
 class GiaoDucChart extends BaseChart
 {
@@ -20,15 +20,26 @@ class GiaoDucChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $giaoduc = ChiTieu::where('tenlinhvuc',3)->first();
-        $doanhthugiaoduc = $giaoduc->doanhthu;
+        $KH = ChiTieu::select('giaoduc','tytronggiaoduc')->first();
+        $TH = ThucHien::select('giaoduc')->first();
 
-        $doanhthu = GiaoDuc::sum('doanhthu');
-            
+        $ptTH = $TH->giaoduc/$KH->giaoduc ;
+        $diem = 0 ;
+
+        if($ptTH < 120 )
+        {
+            $diem = $ptTH * $KH->tytronggiaoduc;
+        }
+        else
+        {
+            $diem = (120/100) * $KH->tytronggiaoduc;
+        }
+
         return Chartisan::build()
-            ->labels(['Doanh thu'])
-            ->dataset('Đạt được ', [$doanhthu])
-            ->dataset('Doanh thu mục tiêu', [$doanhthugiaoduc])
-            ->dataset('Còn Thiếu', [$doanhthugiaoduc-$doanhthu]);
+            ->labels(['Kênh truyền '])
+            ->dataset('Kế hoạch', [$KH->giaoduc])
+            ->dataset('Thực hiện', [$TH->giaoduc])
+            ->dataset('Phần trâm thực hiện', [$ptTH *100])
+            ->dataset('Điểm ', [$diem]);
     }
 }
