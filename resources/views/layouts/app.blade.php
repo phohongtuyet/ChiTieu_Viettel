@@ -69,7 +69,7 @@
                         <a href="{{route('home')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
                         <a href="{{ route('chitieu') }}" class="nav-link " ><i class="fas fa-calendar-day"></i>Chi tiết DT - TB</a>
-                        <a href="{{ route('thuchien') }}" class="nav-link " ><i class="fa fa-laptop me-2"></i>Ctrinh HĐ</a>
+                        <a href="{{ route('chuongtrinh') }}" class="nav-link " ><i class="fa fa-laptop me-2"></i>Ctrinh HĐ</a>
 
 
                         <div class="nav-item dropdown">

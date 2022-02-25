@@ -9,6 +9,7 @@ use App\Http\Controllers\DuAnController;
 use App\Http\Controllers\KenhTruyenController; 
 use App\Http\Controllers\ChiTieuController;
 use App\Http\Controllers\ThucHienController;
+use App\Http\Controllers\CTrinhHDController;
 
 Auth::routes();
 
@@ -28,3 +29,12 @@ Route::get('/thuchien/sua/{id}', [ThucHienController::class, 'getSua'])->name('t
 Route::post('/thuchien/sua/{id}', [ThucHienController::class, 'postSua'])->name('thuchien.sua');
 Route::get('/thuchien/xoa/{id}', [ThucHienController::class, 'getXoa'])->name('thuchien.xoa');
 Route::post('/thuchien/nhap', [ThucHienController::class, 'postNhap'])->name('thuchien.nhap');
+
+Route::get('/chuongtrinh', [CTrinhHDController::class, 'getDanhSach'])->name('chuongtrinh');
+Route::get('/chuongtrinh/them', [CTrinhHDController::class, 'getThem'])->name('chuongtrinh.them');
+Route::post('/chuongtrinh/them', [CTrinhHDController::class, 'postThem'])->name('chuongtrinh.them');
+Route::get('/chuongtrinh/sua/{id}', [CTrinhHDController::class, 'getSua'])->name('chuongtrinh.sua');
+Route::post('/chuongtrinh/sua/{id}', [CTrinhHDController::class, 'postSua'])->name('chuongtrinh.sua');
+Route::get('/chuongtrinh/xoa/{id}', [CTrinhHDController::class, 'getXoa'])->name('chuongtrinh.xoa');
+Route::post('/chuongtrinh/nhap', [CTrinhHDController::class, 'postNhap'])->name('chuongtrinh.nhap');
+

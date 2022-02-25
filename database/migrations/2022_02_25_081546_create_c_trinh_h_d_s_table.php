@@ -15,18 +15,11 @@ return new class extends Migration
     {
         Schema::create('ctrinhhd', function (Blueprint $table) {
             $table->id();
-            $table->double('doanhthudichvu');
-            $table->double('tytrongdoanhthudichvu');
-            $table->double('tongdoanhthu');
-            $table->double('tytrongtongdoanhthu');
-            $table->double('duan');
-            $table->double('tytrongduan');
-            $table->double('kenhtruyen');
-            $table->double('tytrongkenhtruyen');
-            $table->double('giaoduc');
-            $table->double('tytronggiaoduc');
-            $table->double('yte');
-            $table->double('tytrongyte');
+            $table->int('thang');
+            $table->string('tenchuongtrinh');
+            $table->double('kehoach');
+            $table->double('titrong');
+            $table->double('thuchien')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->engine = 'InnoDB';

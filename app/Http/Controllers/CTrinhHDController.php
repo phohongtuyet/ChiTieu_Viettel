@@ -4,82 +4,95 @@ namespace App\Http\Controllers;
 
 use App\Models\CTrinhHD;
 use Illuminate\Http\Request;
+use Excel;
+use App\Imports\chuongtrinh_import;
 
 class CTrinhHDController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function getDanhSach()
     {
-        //
+        $ctrinhhd = CTrinhHD::orderBy('id', 'desc')->get();
+        return view('chuongtrinh.danhsach',compact('ctrinhhd'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getThem()
     {
-        //
+        return view('chuongtrinh.them');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CTrinhHD  $cTrinhHD
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CTrinhHD $cTrinhHD)
+    public function postThem(Request $request)
     {
-        //
+        $this->validate($request, [
+            'tenchuongtrinh' => ['required', 'string' ],
+            'kehoach'=> ['required', 'numeric' ],
+            'titrong'=> ['required', 'numeric' ]
+        ], 
+        $messages = [
+            'tenchuongtrinh.required' => 'Tháng không được bỏ trống.',
+            'kehoach.required' => 'Doanh thu dịch vụ không được bỏ trống.',
+            'titrong.required' => 'Tỷ trọng doanh thu không được bỏ trống.',
+
+        ]);
+           
+        $orm = new CTrinhHD();
+        $orm->tenchuongtrinh = $request->tenchuongtrinh;
+        $orm->kehoach = $request->kehoach;
+        $orm->titrong = $request->titrong;
+        $orm->save();
+
+        return redirect()->route('chuongtrinh')->with('status', 'Thêm mới thành công');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CTrinhHD  $cTrinhHD
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CTrinhHD $cTrinhHD)
+    public function getSua($id)
     {
-        //
+        $ctrinhhd = CTrinhHD::find($id);
+        return view('chuongtrinh.sua', compact('ctrinhhd'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CTrinhHD  $cTrinhHD
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CTrinhHD $cTrinhHD)
+    public function postSua(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'tenchuongtrinh' => ['required', 'string'],
+            'kehoach'=> ['required', 'numeric' ],
+            'titrong'=> ['required', 'numeric' ],
+            'thuchien'=> ['required', 'numeric' ]
+
+        ], 
+        $messages = [
+            'tenchuongtrinh.required' => 'Tên chương trình không được bỏ trống.',
+            'kehoach.required' => 'Kế hoạch không được bỏ trống.',
+            'titrong.required' => 'Tỷ trọng không được bỏ trống.',
+
+        ]);
+           
+        $orm = CTrinhHD::find($id);
+        $orm->tenchuongtrinh = $request->tenchuongtrinh;
+        $orm->kehoach = $request->kehoach;
+        $orm->titrong = $request->titrong;
+        $orm->thuchien = $request->thuchien;
+        $orm->save();
+
+        return redirect()->route('chuongtrinh');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\CTrinhHD  $cTrinhHD
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CTrinhHD $cTrinhHD)
+    public function getXoa($id)
     {
-        //
+        $orm = CTrinhHD::find($id);
+        $orm->delete();
+    
+        return redirect()->route('chuongtrinh');
+    }
+
+    public function postNhap(Request $request)
+    {
+        Excel::import(new chuongtrinh_import, $request->file('file_excel'));
+
+        return redirect()->route('chuongtrinh');
     }
 }
