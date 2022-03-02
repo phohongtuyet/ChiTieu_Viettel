@@ -14,6 +14,7 @@ use App\Http\Controllers\CTrinhHDController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
+Route::get('/showchuongtrinh/{id}', [HomeController::class, 'showchuongtrinh'])->name('home.showchuongtrinh');
 Route::get('/chitieu', [ChiTieuController::class, 'getDanhSach'])->name('chitieu');
 Route::get('/chitieu/them', [ChiTieuController::class, 'getThem'])->name('chitieu.them');
 Route::post('/chitieu/them', [ChiTieuController::class, 'postThem'])->name('chitieu.them');
@@ -37,4 +38,5 @@ Route::get('/chuongtrinh/sua/{id}', [CTrinhHDController::class, 'getSua'])->name
 Route::post('/chuongtrinh/sua/{id}', [CTrinhHDController::class, 'postSua'])->name('chuongtrinh.sua');
 Route::get('/chuongtrinh/xoa/{id}', [CTrinhHDController::class, 'getXoa'])->name('chuongtrinh.xoa');
 Route::post('/chuongtrinh/nhap', [CTrinhHDController::class, 'postNhap'])->name('chuongtrinh.nhap');
+
 

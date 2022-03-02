@@ -566,9 +566,11 @@ class ComposerStaticInit546df2f11990dd0ea029a784f173bb22
     );
 
     public static $classMap = array (
+        'App\\Charts\\DoanhThuDichVuChart' => __DIR__ . '/../..' . '/app/Charts/DoanhThuDichVuChart.php',
         'App\\Charts\\DuAnChart' => __DIR__ . '/../..' . '/app/Charts/DuAnChart.php',
         'App\\Charts\\GiaoDucChart' => __DIR__ . '/../..' . '/app/Charts/GiaoDucChart.php',
         'App\\Charts\\KenhTruyenChart' => __DIR__ . '/../..' . '/app/Charts/KenhTruyenChart.php',
+        'App\\Charts\\TongDoanhThuChart' => __DIR__ . '/../..' . '/app/Charts/TongDoanhThuChart.php',
         'App\\Charts\\YTeChart' => __DIR__ . '/../..' . '/app/Charts/YTeChart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -583,6 +585,7 @@ class ComposerStaticInit546df2f11990dd0ea029a784f173bb22
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ThucHienController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThucHienController.php',
+        'App\\Http\\Controllers\\ThuchienCtController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThuchienCtController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -598,6 +601,7 @@ class ComposerStaticInit546df2f11990dd0ea029a784f173bb22
         'App\\Models\\ChiTieu' => __DIR__ . '/../..' . '/app/Models/ChiTieu.php',
         'App\\Models\\ThucHien' => __DIR__ . '/../..' . '/app/Models/ThucHien.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\thang' => __DIR__ . '/../..' . '/app/Models/thang.php',
         'App\\Models\\thuchien_ct' => __DIR__ . '/../..' . '/app/Models/thuchien_ct.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

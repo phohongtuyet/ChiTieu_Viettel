@@ -12,6 +12,7 @@
             <thead>
                 <tr>
                     <th width="5">#</th>
+                    <th width="15" class="text-center">Tháng</th>
                     <th width="15" class="text-center">Tên chương trình</th>
                     <th width="15" class="text-center">Kế hoạch</th>
                     <th width="15" class="text-center">Tỷ trọng</th>
@@ -27,6 +28,7 @@
                 @foreach($ctrinhhd as $value)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
+                    <td class="text-center">Tháng {{$value->thang}}</td>
                     <td class="text-center">{{$value->tenchuongtrinh}}</td>
                     <td class="text-center">{{$value->kehoach}}</td>
                     <td class="text-center">{{$value->titrong}}</td>

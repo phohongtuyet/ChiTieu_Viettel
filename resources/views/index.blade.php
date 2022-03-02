@@ -105,6 +105,68 @@
     </div>
     
 </div>
+<div class="container-fluid pt-4 px-4">
+            <div class="bg-light text-center rounded p-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Chương trình hành động</h6>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="btn-group" style="float: right;">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Chọn tháng
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach($thang as $item)
+                                <li><a class="dropdown-item" href="{{route('home.showchuongtrinh',$item->id)}}">{{$item->thang}}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+               
+                    <div id="" style="">
+
+                        <table class="table table-hover mt-4">
+                            <tbody>
+                                @foreach($showchuongtrinh as $value)
+                                
+                                <tr>
+                                    <th>{{ $loop->iteration }}</th>
+                                    <td class="text-center" width="50%">{{$value->tenchuongtrinh}}</td>
+                                    <td class="text-center">{{number_format(($value->thuchien/$value->kehoach)*100,2)}}%</td>
+                                    <td class="text-center">
+                                        @if(($value->thuchien/$value->kehoach)*100==0)
+                                        Chưa hoàn thành
+                                        @elseif(($value->thuchien/$value->kehoach)*100<70)
+                                        1 điểm
+                                        @elseif(($value->thuchien/$value->kehoach)*100<90)
+                                        2 điểm
+                                        @elseif(($value->thuchien/$value->kehoach)*100==90)
+                                        3 điểm
+                                        @elseif(($value->thuchien/$value->kehoach)*100<110)
+                                        4 điểm
+                                        @else
+                                        5 điểm
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="{{$value->thuchien}}" aria-valuemin="0" aria-valuemax="{{$value->kehoach}}" style="width:{{number_format(($value->thuchien/$value->kehoach)*100,2)}}%">
+                                                {{number_format(($value->thuchien/$value->kehoach)*100,2)}}%
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    
+</div>
  
 @endsection
 @section('javascript')

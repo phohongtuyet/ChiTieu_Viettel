@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('ctrinhhd', function (Blueprint $table) {
             $table->id();
-            $table->int('thang');
+            $table->double('thang');
             $table->string('tenchuongtrinh');
             $table->double('kehoach');
             $table->double('titrong');

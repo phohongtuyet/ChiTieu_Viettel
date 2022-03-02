@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CTrinhHD extends Model
+class thang extends Model
 {
     use HasFactory;
 
-    protected $table = 'ctrinhhd';
+    protected $table = 'thang';
 
     protected $fillable = [
-        'thang',
-        'tenchuongtrinh',
-        'kehoach',
-        'titrong',
-        'thuchien',
+        'thang'
     ];
 }

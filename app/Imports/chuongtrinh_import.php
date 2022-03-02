@@ -19,6 +19,7 @@ class chuongtrinh_import implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new CTrinhHD([
+            'thang' => $row['thang'],
             'tenchuongtrinh' => $row['tenchuongtrinh'],
             'kehoach' => $row['kehoach'],
             'titrong' => $row['titrong'],

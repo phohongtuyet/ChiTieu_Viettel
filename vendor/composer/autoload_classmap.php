@@ -6,9 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Charts\\DoanhThuDichVuChart' => $baseDir . '/app/Charts/DoanhThuDichVuChart.php',
     'App\\Charts\\DuAnChart' => $baseDir . '/app/Charts/DuAnChart.php',
     'App\\Charts\\GiaoDucChart' => $baseDir . '/app/Charts/GiaoDucChart.php',
     'App\\Charts\\KenhTruyenChart' => $baseDir . '/app/Charts/KenhTruyenChart.php',
+    'App\\Charts\\TongDoanhThuChart' => $baseDir . '/app/Charts/TongDoanhThuChart.php',
     'App\\Charts\\YTeChart' => $baseDir . '/app/Charts/YTeChart.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -23,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\ThucHienController' => $baseDir . '/app/Http/Controllers/ThucHienController.php',
+    'App\\Http\\Controllers\\ThuchienCtController' => $baseDir . '/app/Http/Controllers/ThuchienCtController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
@@ -38,6 +41,7 @@ return array(
     'App\\Models\\ChiTieu' => $baseDir . '/app/Models/ChiTieu.php',
     'App\\Models\\ThucHien' => $baseDir . '/app/Models/ThucHien.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\thang' => $baseDir . '/app/Models/thang.php',
     'App\\Models\\thuchien_ct' => $baseDir . '/app/Models/thuchien_ct.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
