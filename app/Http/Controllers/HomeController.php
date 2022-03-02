@@ -32,9 +32,8 @@ class HomeController extends Controller
                 $showchuongtrinh=CTrinhHD::where('thang',1)->orderby('thang','DESC')->paginate(10);
                 
                 return view('index',compact('kenhtruyen','yte','giaoduc','duan','thang','showchuongtrinh'));  
-
-            }
-
+            }            
+            return view('index');  
         }
         else
         {
