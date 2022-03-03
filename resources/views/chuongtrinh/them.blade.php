@@ -17,23 +17,13 @@
             <div class="col">
                 <div class="form-group mt-2">
                     <label for="thang">Tháng<span class="text-danger font-weight-bold">*</span></label>
-                    <select id="thang" class="form-control custom-select @error('thang') is-invalid @enderror" name="thang" required>
+                    <select id="thang" class="form-control custom-select @error('thang') is-invalid @enderror" name="thang" required autofocus>
                         <option value="">--Chọn tháng--</option>
-                        <option value="1">Tháng 1</option>
-                        <option value="2">Tháng 2</option>
-                        <option value="3">Tháng 3</option>
-                        <option value="4">Tháng 4</option>
-                        <option value="5">Tháng 5</option>
-                        <option value="6">Tháng 6</option>
-                        <option value="7">Tháng 7</option>
-                        <option value="8">Tháng 8</option>
-                        <option value="9">Tháng 9</option>
-                        <option value="10">Tháng 10</option>
-                        <option value="11">Tháng 11</option>
-                        <option value="12">Tháng 12</option>
-                        
+                        @foreach($thang as $value)
+                            <option value="{{ $value->id }}">{{ $value->thang}}</option>
+                        @endforeach
                     </select>
-                  </div>
+                </div>
             </div>
         </div>
 
